@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$imagep_1 = 'templates/template1.png';
+$imagep_1 = 'templates/temaplte1.pgn';
 $imagep_2 = 'templates/template2.jpg';
 $imagep_3 = 'templates/template3.jpg';
 $imagep_4 = 'templates/template4.jpg';
@@ -109,19 +109,19 @@ h3 {
         <div class="template-grid">
             <div class="template-item">
                 <img src="<?php echo $imagep_1; ?>" alt="Template 1">
-                <a class="template-link" href="edit_template5.php">Select Template 1</a>
+                <a class="template-link" href="edit_template1.php?template=1">Select Template 1</a>
             </div>
             <div class="template-item">
                 <img src="<?php echo $imagep_2; ?>" alt="Template 2">
-                <a class="template-link" href="edit_template6.php">Select Template 2</a>
+                <a class="template-link" href="edit_template.php?template=2">Select Template 2</a>
             </div>
             <div class="template-item">
                 <img src="<?php echo $imagep_3; ?>" alt="Template 3">
-                <a class="template-link" href="edit_template3.php">Select Template 3</a>
+                <a class="template-link" href="edit_template.php?template=3">Select Template 3</a>
             </div>
             <div class="template-item">
                 <img src="<?php echo $imagep_4; ?>" alt="Template 4">
-                <a class="template-link" href="edit_template4.php">Select Template 4</a>
+                <a class="template-link" href="edit_template.php?template=4">Select Template 4</a>
             </div>
         </div>
         <a class="btn logout-btn" href="logout.php">Logout</a>
