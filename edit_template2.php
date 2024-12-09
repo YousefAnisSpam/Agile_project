@@ -6,8 +6,8 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-// Get the selected template number
-$template_id = isset($_GET['template']) ? (int)$_GET['template'] : 1; // Default to 1 if not set
+// Explicitly set the template ID to 2
+$template_id = 2; 
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +15,12 @@ $template_id = isset($_GET['template']) ? (int)$_GET['template'] : 1; // Default
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Template</title>
+    <title>Edit Template 2</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" 
+            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <style>
         body {
             background-color: #f0f4f8;
             font-family: 'Poppins', sans-serif;
@@ -105,13 +108,13 @@ $template_id = isset($_GET['template']) ? (int)$_GET['template'] : 1; // Default
     <script>
         function updatePreview() {
             const fullName = document.getElementById('fullname').value;
-            const CompanyName = document.getElementById('CompanyName').value;
+            const companyName = document.getElementById('CompanyName').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const location = document.getElementById('location').value;
 
             document.getElementById('previewFullName').innerText = fullName || "Full Name";
-            document.getElementById('previewCompanyName').innerText = CompanyName || "Company Name";
+            document.getElementById('previewCompanyName').innerText = companyName || "Company Name";
             document.getElementById('previewPhone').innerText = "Phone: " + (phone || "[Your Phone Number]");
             document.getElementById('previewEmail').innerText = "Email: " + (email || "[Your Email]");
             document.getElementById('previewLocation').innerText = "Location: " + (location || "[Your Location]");
@@ -145,12 +148,14 @@ $template_id = isset($_GET['template']) ? (int)$_GET['template'] : 1; // Default
         </div>
         
         <form action="save_template.php" method="POST" oninput="updatePreview()">
+            <input type="hidden" name="template_id" value="<?= htmlspecialchars($template_id) ?>">
             <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
             <input type="text" id="CompanyName" name="CompanyName" placeholder="Company Name" required>
             <input type="text" id="phone" name="phone" placeholder="Phone" required>
             <input type="email" id="email" name="email" placeholder="Email" required>
             <input type="text" id="location" name="location" placeholder="Location" required>
-            <button type="submit">Save Progress</button>
+            <input type="text" id="shipping_address" name="shipping_address" placeholder="Shipping Address" required>
+            <button type="submit">Order Now</button>
             <button type="button" onclick="downloadCard()">Download</button>
         </form>
         
