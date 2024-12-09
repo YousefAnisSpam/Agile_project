@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Get the selected template number
-$template_id = isset($_GET['template']) ? (int)$_GET['template'] : 1; // Default to 1 if not set
+$template_id =4;
 ?>
 
 <!DOCTYPE html>
@@ -145,11 +145,13 @@ $template_id = isset($_GET['template']) ? (int)$_GET['template'] : 1; // Default
         </div>
         
         <form action="save_template.php" method="POST" oninput="updatePreview()">
+            <input type="hidden" name="template_id" value="<?= htmlspecialchars($template_id) ?>">
             <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
             <input type="text" id="CompanyName" name="CompanyName" placeholder="Company Name" required>
             <input type="text" id="phone" name="phone" placeholder="Phone" required>
             <input type="email" id="email" name="email" placeholder="Email" required>
             <input type="text" id="location" name="location" placeholder="Location" required>
+            <input type="text" id="shipping_address" name="shipping_address" placeholder="Shipping Address" required>
             <button type="submit">Order Now</button>
             <button type="button" onclick="downloadCard()">Download</button>
         </form>
