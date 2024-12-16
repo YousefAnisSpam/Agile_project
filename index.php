@@ -1,22 +1,28 @@
 <?php
 session_start();
 
-// Hardcoded accounts
+// Hardcoded accounts with roles
 $accounts = [
-    "admin" => "admin1",
-    "Yousef Anis" => "192100029",
-    "Ahmed Essam" => "192100088",
-    "Yousef Gabr" => "192100069"
+    "admin" => ["password" => "admin1", "role" => "admin"],
+    "Yousef Anis" => ["password" => "192100029", "role" => "user"],
+    "Ahmed Essam" => ["password" => "192100088", "role" => "user"],
+    "Yousef Gabr" => ["password" => "192100069", "role" => "user"]
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (isset($accounts[$username]) && $accounts[$username] === $password) {
+    if (isset($accounts[$username]) && $accounts[$username]['password'] === $password) {
         $_SESSION['username'] = $username;
-        header("Location: templates.php");
+        $_SESSION['role'] = $accounts[$username]['role']; // Store user role
+
+        // Redirect based on role
+        if ($_SESSION['role'] === 'admin') {
+            header("Location: admin_dashboard.php"); // Redirect to admin dashboard
+        } else {
+            header("Location: templates.php"); // Redirect to user templates
+        }
         exit();
     } else {
         $error = "Invalid username or password.";
