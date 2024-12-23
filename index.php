@@ -15,7 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($accounts[$username]) && $accounts[$username]['password'] === $password) {
         $_SESSION['username'] = $username;
-        $_SESSION['role'] = $accounts[$username]['role']; // Store user role
+        $_SESSION['role'] = $accounts[$username]['role    "user1" => ["password" => "12345", "role" => "user"],
+    "user1" => ["password" => "12345", "role" => "user"],
+']; // Store user role
 
         // Redirect based on role
         if ($_SESSION['role'] === 'admin') {
@@ -191,14 +193,13 @@ button:hover {
     color: blue;
 }
 </style>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -218,7 +219,7 @@ button:hover {
             <button type="submit" class="btn">Login</button>
         </form>
         <div class="recover">
-            <a href="#">Forgot Password?</a>
+            <a href="signup.php">Don't have an account? Sign Up</a>
         </div>
     </div>
 </body>
